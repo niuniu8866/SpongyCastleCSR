@@ -1,5 +1,6 @@
 package com.example.csr.spongycastlecsr;
 
+import android.util.Base64;
 import android.util.Log;
 
 import junit.framework.TestCase;
@@ -18,7 +19,7 @@ public class CSRTest extends TestCase {
     public void testGenerateRequest() throws Exception {
 
         KeyPair keyPair = CSR.RSAKeyPairGeneration();
-        PKCS10CertificationRequest csr = CSR.GenerateRequest(keyPair,"SHA256withRSA");
+        PKCS10CertificationRequest csr = CSR.GenerateRequest(keyPair, "SHA256withRSA");
         String csrInPem = CSR.csrToPem(csr);
         Log.v(TEST,"The csr detail is: \n"+csrInPem);
     }
@@ -31,7 +32,7 @@ public class CSRTest extends TestCase {
     public void testRSAKeyPairGeneration() throws Exception {
 
         KeyPair keyPair = CSR.RSAKeyPairGeneration();
-        Log.v(TEST,"The Private Key is " + new String(keyPair.getPrivate().getEncoded()));
-        Log.v(TEST,"The Public Key is " + new String(keyPair.getPublic().getEncoded()));
+        Log.v(TEST,"The Private Key is " + Base64.encodeToString(keyPair.getPrivate().getEncoded(),Base64.NO_PADDING));
+        Log.v(TEST,"The Public Key is " + Base64.encodeToString(keyPair.getPublic().getEncoded(),Base64.NO_PADDING));
     }
 }
