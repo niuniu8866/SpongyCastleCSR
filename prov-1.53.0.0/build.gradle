@@ -1,0 +1,2 @@
+configurations.create("default")
+artifacts.add("default", file('prov-1.53.0.0.jar'))
