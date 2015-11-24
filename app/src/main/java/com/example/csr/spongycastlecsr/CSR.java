@@ -34,7 +34,7 @@ public class CSR {
     public static PKCS10CertificationRequest GenerateRequest (KeyPair keypair, String signatureAlgorithm) throws OperatorCreationException {
 
         PKCS10CertificationRequestBuilder p10Builder = new JcaPKCS10CertificationRequestBuilder(
-                new X500Principal("CN=Requested Test Certificate"), keypair.getPublic());
+                new X500Principal("CN=testtest"), keypair.getPublic());
         JcaContentSignerBuilder csBuilder = new JcaContentSignerBuilder(signatureAlgorithm);
         ContentSigner signer = csBuilder.build(keypair.getPrivate());
         PKCS10CertificationRequest csr = p10Builder.build(signer);
